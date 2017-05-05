@@ -17,7 +17,6 @@ const authEvents = require('./auth/events.js')
 
 $(() => {
   authEvents.addHandlers()
-  // gameEngineEvents.addGameHandler()
 })
 
 module.exports = {
