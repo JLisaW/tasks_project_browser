@@ -1,38 +1,38 @@
 'use strict'
 
 const getFormFields = require(`../../../lib/get-form-fields`)
-const gamesApi = require('./api.js')
-const gamesUi = require('./ui.js')
+const api = require('./api.js')
+const ui = require('./ui.js')
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  gamesApi.signIn(data)
-    .then(gamesUi.signInSuccess)
-    .catch(gamesUi.signInFailure)
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
 }
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  gamesApi.signUp(data)
-    .then(gamesUi.signUpSuccess)
-    .catch(gamesUi.signUpFailure)
+  api.signUp(data)
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  gamesApi.signOut(data)
-    .then(gamesUi.signOutSuccess)
-    .catch(gamesUi.signOutFailure)
+  api.signOut(data)
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
 }
 
 const onChangePassword = function (event) {
   const data = getFormFields(event.target)
-  gamesApi.changePassword(data)
-    .then(gamesUi.changePasswordSuccess)
-    .catch(gamesUi.changePasswordFailure)
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
 }
 
 const addHandlers = () => {

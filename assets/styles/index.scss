@@ -1,20 +1,26 @@
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+// $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+// @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+//
+// body {
+//   padding-top: 40px;
+//   padding-bottom: 40px;
+//   background-color: #dadbdf;
+// }
+//
+// .form-signin {
+//   max-width: 330px;
+//   padding: 15px;
+//   margin: 0 auto;
+// }
+//
+// .form-signin input[type="email"] {
+//   margin-bottom: -1px;
+//   border-bottom-right-radius: 0;
+//   border-bottom-left-radius: 0;
+// }
 
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #dadbdf;
-}
-
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+.authentication {
+height: 100px;
+float:right;
+font-size: 10px
 }
