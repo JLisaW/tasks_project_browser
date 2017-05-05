@@ -5,6 +5,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 
 const onSignIn = function (event) {
+  console.log('sign in success')
   const data = getFormFields(this)
   event.preventDefault()
   api.signIn(data)
@@ -13,8 +14,10 @@ const onSignIn = function (event) {
 }
 
 const onSignUp = function (event) {
-  const data = getFormFields(this)
   event.preventDefault()
+  console.log('sign up success')
+  const data = getFormFields(this)
+
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
