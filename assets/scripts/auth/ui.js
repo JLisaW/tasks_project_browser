@@ -4,6 +4,7 @@ const store = require('../store.js')
 
 const signUpSuccess = (data) => {
   console.log('sign up success')
+  $('#signUp').modal('hide')
   userMessage('You have successfullly signed up, please sign in.')
 }
 
@@ -17,6 +18,7 @@ const signInSuccess = (data) => {
   store.user = data.user
   console.log(data.user)
   userMessage('You have successfully signed in.')
+  $('#authentication').modal('hide')
 }
 
 const signInFailure = (error) => {
@@ -28,12 +30,14 @@ const autoSignInSuccess = (data) => {
   console.log('auto sign in success')
   store.user = data.user
   userMessage('You are successfully signed in.')
+  $('#authentication').modal('hide')
 }
 
 const autoSignInFailure = (error) => {
   console.log(error)
   userMessage('Sign in unsuccessful, please try again.')
 }
+
 const signOutSuccess = (data) => {
   console.log('sign out success')
   store.user = null
@@ -48,6 +52,7 @@ const signOutFailure = (data) => {
 const changePasswordSuccess = (data) => {
   console.log('password change success')
   userMessage('Password Change Successful.')
+  $('#change-password').modal('hide')
 }
 
 const changePasswordFailure = (data) => {

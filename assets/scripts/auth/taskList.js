@@ -1,51 +1,44 @@
 'use strict'
+const userMessage = require('./ui.js')
+
 // list of tasks
 const taskList = []
+
 // one task
 const taskItem = document.getElementById('task').value
 
 const createTask = document.createElement('task')
 
 const deleteTask = function () {
+  console.log('delete task function fired')
   const taskItem = document.getElementById('task').value
   taskList.splice(taskList.id)
+  console.log(taskList.id)
   return
 }
 
-const updateTask
-
+// add task function
 const newTask = function () {
+  console.log('add task')
   const taskItem = document.getElementById('task').value
   if (taskItem === '') {
-    alert ("You must add a task.")
+    userMessage ("You must add a task.")
   else {
     taskList.push(taskList)
   }
-  }
+}
   return
 }
-// add task function
-function newTask () {
-  const taskItem = document.getElementById('task').value
-  const getUserTask
-}
 
+// get task function
 function getUserTask () {
   const taskList = []
   const taskItem = document.getElementById('task').value
   if (taskItem !== null) {
-    taskList = JSON.parse(taskItem)
+    userMessage ("You have no incomplete tasks.")
   } else {
     taskList
   }
 }
 
-$(document).ready(
-  function () {
-    $('#addTask').click(
-      function () {
-        const addTask =
-      }
-    )
-  }
-)
+// const updateTask

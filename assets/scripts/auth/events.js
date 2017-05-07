@@ -6,22 +6,21 @@ const ui = require('./ui.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('sign up success')
   const data = getFormFields(this)
+  console.log('sign up success')
   api.signUp(data)
     .then(ui.signUpSuccess)
     .then(() => {
-      api.signInAuto(data)
+      api.autoSignIn(data)
        .then(ui.autoSignInSuccess)
        .catch(ui.autoSignInFailure)
     })
    .catch(ui.signUpFailure)
-    .catch(ui.signUpFailure)
 }
 
 const onSignIn = function (event) {
-  console.log('sign in success')
   const data = getFormFields(this)
+  console.log('sign in success')
   event.preventDefault()
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -35,6 +34,7 @@ const onSignOut = function (event) {
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
+  $('#signIn').modal('hide')
 }
 
 const onChangePassword = function (event) {
@@ -44,6 +44,7 @@ const onChangePassword = function (event) {
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
+  $('#signIn').modal('hide')
 }
 
 const onNewTask = function (event) {
@@ -82,14 +83,14 @@ const onDeleteTask = function (event) {
 }
 
 const addHandlers = () => {
-  $('#sign-up').on('click', onSignUp)
-  $('#sign-in').on('click', onSignIn)
-  $('#sign-out').on('click', onSignOut)
-  $('#change-password').on('click', onChangePassword)
-  $('#newTask').on('click', onNewTask)
-  $('#getUserTasks').on('click', onGetUserTasks)
-  $('#updateTask').on('click', onUpdateTask)
-  $('#deleteTask').on('click', onDeleteTask)
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+  $('#sign-out').on('submit', onSignOut)
+  $('#change-password').on('submit', onChangePassword)
+  $('#newTask').on('submit', onNewTask)
+  $('#getUserTasks').on('submit', onGetUserTasks)
+  $('#updateTask').on('submit', onUpdateTask)
+  $('#deleteTask').on('submit', onDeleteTask)
 }
 
 module.exports = {
