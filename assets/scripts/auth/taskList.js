@@ -1,26 +1,51 @@
 'use strict'
-
-const task = []
-
+// list of tasks
+const taskList = []
+// one task
 const taskItem = document.getElementById('task').value
 
 const createTask = document.createElement('task')
 
 const deleteTask = function () {
   const taskItem = document.getElementById('task').value
-  task.splice(task)
+  taskList.splice(taskList.id)
   return
 }
 
 const updateTask
 
-const addTask = function () {
+const newTask = function () {
   const taskItem = document.getElementById('task').value
   if (taskItem === '') {
     alert ("You must add a task.")
   else {
-    task.push(task)
+    taskList.push(taskList)
   }
   }
   return
 }
+// add task function
+function newTask () {
+  const taskItem = document.getElementById('task').value
+  const getUserTask
+}
+
+function getUserTask () {
+  const taskList = []
+  const taskItem = document.getElementById('task').value
+  if (taskItem !== null) {
+    taskList = JSON.parse(taskItem)
+  } else {
+    taskList
+  }
+}
+
+$(document).ready(
+  function () {
+    $('#addTask').click(
+      function () {
+        const addTask =
+      }
+    )
+  }
+)

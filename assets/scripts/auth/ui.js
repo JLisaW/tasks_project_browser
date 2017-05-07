@@ -89,6 +89,16 @@ const getTasksFailure = (data) => {
   userMessage('Something went wrong, please try again.')
 }
 
+const deleteTaskSuccess = (data) => {
+  console.log('delete task success')
+  userMessage('You have deleted your task.')
+}
+
+const deleteTaskFailure = (data) => {
+  console.log('delete task failure')
+  userMessage('Something went wrong, please try again.')
+}
+
 const userMessage = (txt) => {
   const message = $('#message')[0]
   $(message).text(txt)
@@ -110,5 +120,7 @@ module.exports = {
   updateTaskFailure,
   updateTaskSuccess,
   createTaskError,
-  createTaskSuccess
+  createTaskSuccess,
+  deleteTaskSuccess,
+  deleteTaskFailure
 }

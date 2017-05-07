@@ -53,6 +53,13 @@ const onNewTask = function (event) {
       .catch(ui.createTaskError)
 }
 
+const onUpdateTask = function (event) {
+  event.preventDefault()
+  api.updateTask()
+    .then(ui.updateTaskSuccess)
+    .catch(ui.updateTaskError)
+}
+
 const onGetUserTasks = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -66,6 +73,14 @@ const onGetUserTasks = function (event) {
   }
 }
 
+const onDeleteTask = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.deleteTask(data)
+    .then(ui.deleteTaskSuccess)
+    .catch(ui.deleteTaskFailure)
+}
+
 const addHandlers = () => {
   $('#sign-up').on('click', onSignUp)
   $('#sign-in').on('click', onSignIn)
@@ -73,6 +88,8 @@ const addHandlers = () => {
   $('#change-password').on('click', onChangePassword)
   $('#newTask').on('click', onNewTask)
   $('#getUserTasks').on('click', onGetUserTasks)
+  $('#updateTask').on('click', onUpdateTask)
+  $('#deleteTask').on('click', onDeleteTask)
 }
 
 module.exports = {
