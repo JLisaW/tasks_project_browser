@@ -166,23 +166,27 @@
   <!-- /.modal-content -->
   <!-- /.modal-dialog -->
   <!-- /.modal -->
+<div class="container">
 
-  <footer id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-        </div>
+        <h3>List of Tasks</h3>
+<ul>
+        <li id="taskList" class="editMode">
+          <!-- <input type="checkbox"> -->
+          <input type="text" placeholder="add task here">
+          <input type="submit" name="submit" id="createTask" value="new task" class="btn btn-custom">
+          <input type="submit" name="submit" id="deleteTask" value="delete task" class="btn btn-custom">
+          </li>
+</ul>
+  </div>
+</body>
+
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
       </div>
     </div>
-  </footer>
-
-
-  <div class="container">
-    <input id="task"><button id="newTask">New Task</button>
-    <hr>
-    <div id="taskList"></div>
   </div>
-
-</body>
+</footer>
 
 </html>

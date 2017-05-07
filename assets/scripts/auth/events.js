@@ -47,7 +47,7 @@ const onChangePassword = function (event) {
   $('#signIn').modal('hide')
 }
 
-const onNewTask = function (event) {
+const onCreateTask = function (event) {
   event.preventDefault()
   api.createTask()
       .then(ui.createTaskSuccess)
@@ -87,7 +87,7 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
-  $('#newTask').on('submit', onNewTask)
+  $('#createTask').on('submit', onCreateTask)
   $('#getUserTasks').on('submit', onGetUserTasks)
   $('#updateTask').on('submit', onUpdateTask)
   $('#deleteTask').on('submit', onDeleteTask)

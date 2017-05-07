@@ -5,40 +5,50 @@ const userMessage = require('./ui.js')
 const taskList = []
 
 // one task
-const taskItem = document.getElementById('task').value
+const taskItem = document.getElementById('taskList').value
 
-const createTask = document.createElement('task')
+// add task
+function createTask() {
+  console.log('task created')
+  const task = document.createElement('createTask').innerHTML
+  const taskItem = document.getElementById('createTask').value
+  if (taskItem === '') {
+    userMessage("You must add a task.")
+  }
+  return taskList.push(updateTask)
+}
 
-const deleteTask = function () {
+const deleteTask = function() {
   console.log('delete task function fired')
-  const taskItem = document.getElementById('task').value
+  const taskItem = document.getElementById('taskList').value
   taskList.splice(taskList.id)
   console.log(taskList.id)
   return
 }
 
-// add task function
-const newTask = function () {
+// update task function
+const updateTask = function () {
   console.log('add task')
-  const taskItem = document.getElementById('task').value
-  if (taskItem === '') {
-    userMessage ("You must add a task.")
-  else {
-    taskList.push(taskList)
-  }
-}
-  return
+  const taskItem = document.getElementById('taskList').value
+  taskList.push(updateTask)
 }
 
 // get task function
-function getUserTask () {
+function getUserTask() {
   const taskList = []
   const taskItem = document.getElementById('task').value
   if (taskItem !== null) {
-    userMessage ("You have no incomplete tasks.")
+    userMessage("You have no incomplete tasks.")
   } else {
-    taskList
+  taskList
   }
 }
 
-// const updateTask
+module.exports {
+  taskList,
+  taskItem,
+  createTask,
+  deleteTask,
+  updateTask,
+  getUserTask
+}
