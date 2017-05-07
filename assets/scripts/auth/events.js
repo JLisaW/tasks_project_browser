@@ -46,7 +46,14 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
-const getUserTasks = function (event) {
+const onNewTask = function (event) {
+  event.preventDefault()
+  api.createTask()
+      .then(ui.createTaskSuccess)
+      .catch(ui.createTaskError)
+}
+
+const onGetUserTasks = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   const user = data.user
@@ -60,11 +67,12 @@ const getUserTasks = function (event) {
 }
 
 const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-  $('#sign-out').on('submit', onSignOut)
-  $('#change-password').on('submit', onChangePassword)
-  $('#getUserTasks').on('submit', getUserTasks)
+  $('#sign-up').on('click', onSignUp)
+  $('#sign-in').on('click', onSignIn)
+  $('#sign-out').on('click', onSignOut)
+  $('#change-password').on('click', onChangePassword)
+  $('#newTask').on('click', onNewTask)
+  $('#getUserTasks').on('click', onGetUserTasks)
 }
 
 module.exports = {
