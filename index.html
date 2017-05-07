@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
 
+<head>
+  <title>Delegate My Tasks</title>
   <!-- Do not add `link` tags unless you know what you are doing -->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
@@ -9,31 +10,124 @@
   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
   <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
-
 <body>
-  <br>
-  <div class="authentication">
+
+  <section id="signIn">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-wrap">
+            <h1>Delegate My Tasks</h1>
+
+            <form id="sign-in">
+              <div class="form-group">
+                <label for="email" class="sr-only">Email</label>
+                <input type="text" name="credentials[email]" class="form-control" placeholder="email">
+              </div>
+
+              <div class="form-group">
+                <label for="key" class="sr-only">Password</label>
+                <input type="password" name="key" class="form-control" placeholder="password">
+              </div>
+              <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Sign In">
+            </form>
+
+            <a class="link" data-toggle="modal" data-target=".forget-modal">Sign Up</a>
+            <br>
+            <a class="link1" data-toggle="modal" data-target=".forget-modal1">Change Password</a>
+          </br>
+          </div>
+        </div>
+        <!-- /.col-xs-12 -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+
   <form id="sign-up">
-    <fieldset>
-      <legend>Sign up!</legend>
-      <input type="text" name="credentials[email]" placeholder="email">
-      <input type="password" name="credentials[password]" placeholder="password">
-      <input type="password" name="credentials[password_confirmation]" placeholder="password_confirmation">
-      <input type="submit" name="submit" value="Sign up!">
-    </fieldset>
+    <div class="modal fade forget-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">×</span>
+					<span class="sr-only">Close</span>
+				</button>
+            <h4 class="modal-title">Create Account</h4>
+          </div>
+
+          <div class="modal-body">
+            <input type="text" name="credentials[email]" class="form-control" placeholder="email">
+          </div>
+
+          <div class="modal-body">
+            <input type="password" name="credentials[password]" class="form-control" placeholder="password">
+          </div>
+
+          <div class="modal-body">
+            <input type="text" name="credentials[password_confirmation]" class="form-control" placeholder="password_confirmation">
+          </div>
+
+          <div class="modal-footer">
+            <input type="submit" id="btn-signUp" value="Sign up" class="btn btn-custom">
+  </div>
+</div>
+</div>
+</div>
   </form>
 
-<br>
-  <form id="sign-in">
-  <fieldset>
-    <legend>Sign In!</legend>
-    <input type="text" name="credentials[email]" placeholder="email">
-    <input type="password" name="credentials[password]" placeholder="password">
-    <input type="submit" name="submit" value="Sign In!">
-  </fieldset>
-</form>
+  <form id="change-password">
 
-  <br>
+    <div class="modal fade forget-modal1" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog modal-sm">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+
+            <button type="button" class="close" data-dismiss="modal">
+
+          <span aria-hidden="true">×</span>
+					<span class="sr-only">Close</span>
+
+        </button>
+
+            <h4 class="modal-title">Change Password</h4>
+          </div>
+
+          <div class="modal-body">
+            <input type="password" name="passwords[old]" class="form-control" placeholder="old password">
+          </div>
+
+          <div class="modal-body">
+            <input type="password" name="passwords[new]" class="form-control" placeholder="new password">
+          </div>
+
+          <div class="modal-footer">
+            <input type="submit" name="submit" id="btn-changePW" value="Change Password" class="btn btn-custom">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+
+  <!-- /.modal-content -->
+  <!-- /.modal-dialog -->
+  <!-- /.modal -->
+
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- <br>
   <form id="change-password">
     <fieldset>
       <legend>Change Password!</legend>
@@ -51,9 +145,7 @@
     </fieldset>
   </form>
 
-  <br>
-</div>
-
+  <br> -->
 </body>
 
 </html>
