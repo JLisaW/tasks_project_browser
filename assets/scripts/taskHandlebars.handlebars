@@ -31,10 +31,11 @@
       <tr>
         <td>{{task.id}}</td>
         <td>{{task.description}}</td>
+        <td><button id="{{deleteTask}}" class="btn btn-danger">Delete</button></td>
+        <td><button id="{{updateTask}}" class="btn btn-info">Edit</button></td>
         <!-- <td>
-          <button data-id="{{moviePost.id}}" class="btn btn-warning update-movie-post">Edit</button>
-          <button data-id="{{moviePost.id}}" class="btn btn-danger delete-movie-post">Delete</button>
-        </td> -->
+          <!-<button data-id="{{moviePost.id}}" class="btn btn-warning update-movie-post">Edit</button>
+          <button data-id="{{moviePost.id}}" class="btn btn-danger delete-movie-post">Delete</button> -->
       </tr>
     {{/each}}
   </tbody>

@@ -55,7 +55,6 @@ const onCreateTask = function (event) {
   const data = getFormFields(event.target)
   console.log('events', data)
   api.createTask(data)
-  // console.log(api.createTask)
       .then(ui.createTaskSuccess)
       .then(() => {
         api.getUserTasks()

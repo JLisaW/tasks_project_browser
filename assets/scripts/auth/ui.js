@@ -90,17 +90,20 @@ const updateTaskFailure = (data) => {
 
 const getUserTasksSuccess = (data) => {
   console.log('get task success')
+  console.log('get tasks function fired')
   store.userTasks = data.tasks
+  console.log(store.userTasks)
   const showTaskHtml = showTasksHB({ tasks: store.userTasks })
   console.log(data)
-  $('#content').empty()
   $('#content').append(showTaskHtml)
+  $('#content').text('')
+  // $('#content').empty()
   // userMessage('Here are your tasks.')
 }
 
-const clearUserTask = () => {
-  $('.content').empty()
-}
+// const clearUserTask = () => {
+//   $('#content').empty()
+// }
 
 const getUserTasksFailure = (data) => {
   console.log('get task failure')
@@ -140,6 +143,6 @@ module.exports = {
   createTaskError,
   createTaskSuccess,
   deleteTaskSuccess,
-  deleteTaskFailure,
-  clearUserTask
+  deleteTaskFailure
+  // clearUserTask
 }

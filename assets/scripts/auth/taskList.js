@@ -1,5 +1,4 @@
 'use strict'
-const userMessage = require('./ui.js')
 
 // list of tasks
 const taskList = []
@@ -24,8 +23,6 @@ const deleteTask = function () {
   remove.removeChild(taskItem)
 }
 
-// const newTask = document.queryselector('#createTask')
-// const taskUl = document.queryselector('.taskList ul')
 // // update task function
 // const updateTask = function () {
 //   console.log('add task')
@@ -36,11 +33,17 @@ const deleteTask = function () {
 // }
 
 // get task function
+// function getAllTasks () {
+//   console.log('get all tasks function')
+//   const taskList = []
+//   const taskItem = document.getElementById('task').value
+//   return taskList
+// }
+
 function getUserTask () {
   const taskList = []
   const taskItem = document.getElementById('task').value
   if (taskItem !== null) {
-    userMessage('You have no incomplete tasks.')
   } else {
     taskList
   }
