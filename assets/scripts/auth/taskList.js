@@ -23,12 +23,16 @@ const deleteTask = function () {
   remove.removeChild(taskItem)
 }
 
-// update task function
-const updateTask = function () {
-  console.log('add task')
-  const taskItem = document.getElementById('taskList').value
-  taskList.push(updateTask)
-}
+// const newTask = document.queryselector('#createTask')
+// const taskUl = document.queryselector('.taskList ul')
+// // update task function
+// const updateTask = function () {
+//   console.log('add task')
+//   const taskItem = createTask(newTask.value)
+//   // taskList.push(updateTask)
+//   taskUl.appendChild(taskItem)
+//   newTask.value = ''
+// }
 
 // get task function
 function getUserTask () {
@@ -46,6 +50,6 @@ module.exports = {
   taskItem,
   createTask,
   deleteTask,
-  updateTask,
+  // updateTask,
   getUserTask
 }

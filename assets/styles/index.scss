@@ -73,6 +73,26 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     color: #fff;
 }
 
+.complete-list {
+  float:right;
+  width:46%;
+}
+
+ul {
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+li{
+  padding:10px;
+  border-bottom:1px dotted #CCC;
+}
+
+.delete {
+  float:right;
+}
+
 /*    --------------------------------------------------
     :: Footer
 	-------------------------------------------------- */
@@ -88,13 +108,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     color: inherit;
 }
 
-
-// .authentication {
-// height: 100px;
-// float:right;
-// font-size: 10px
-// }
-//
 #message {
    text-align: center;
    color: #d2e1dd;

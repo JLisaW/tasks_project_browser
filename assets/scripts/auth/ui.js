@@ -62,25 +62,29 @@ const changePasswordFailure = (data) => {
 
 const createTaskSuccess = (data) => {
   console.log('create task success')
+  console.log(data)
   store.task = data.task
   userMessage('New Task Created!')
 }
 
 const createTaskError = (data) => {
+  console.log('ui', data.task)
+  console.log(store.user.token)
+  console.log(store.user.task)
   console.log('create task error')
   userMessage('Something went wrong, please try again.')
 }
 
-const viewTasksSuccess = (data) => {
-  console.log('view task success')
-  store.task = data.task
-  userMessage('Here are your tasks.')
-}
-
-const viewTasksError = (data) => {
-  console.log('view task error')
-  userMessage('Something went wrong, please try again.')
-}
+// const viewTaskSuccess = (data) => {
+//   console.log('view task success')
+//   store.task = data.task
+//   userMessage('Here are your tasks.')
+// }
+//
+// const viewTaskError = (data) => {
+//   console.log('view task error')
+//   userMessage('Something went wrong, please try again.')
+// }
 
 const updateTaskSuccess = (data) => {
   console.log('update task success')
@@ -94,13 +98,13 @@ const updateTaskFailure = (data) => {
   userMessage('Something went wrong, please try again.')
 }
 
-const getTasksSuccess = (data) => {
+const getUserTaskSuccess = (data) => {
   console.log('get task success')
   store.tasks = data.tasks
   userMessage('Here are your tasks.')
 }
 
-const getTasksFailure = (data) => {
+const getUserTaskFailure = (data) => {
   console.log('get task failure')
   userMessage('Something went wrong, please try again.')
 }
@@ -131,14 +135,12 @@ module.exports = {
   signOutFailure,
   changePasswordSuccess,
   changePasswordFailure,
-  getTasksFailure,
-  getTasksSuccess,
+  getUserTaskFailure,
+  getUserTaskSuccess,
   updateTaskFailure,
   updateTaskSuccess,
   createTaskError,
   createTaskSuccess,
   deleteTaskSuccess,
-  deleteTaskFailure,
-  viewTasksSuccess,
-  viewTasksError
+  deleteTaskFailure
 }

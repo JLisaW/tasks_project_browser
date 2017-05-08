@@ -52,24 +52,25 @@ const onChangePassword = function (event) {
 
 const onCreateTask = function (event) {
   event.preventDefault()
-  // const data = getFormFields(event.target)
-  api.createTask()
+  const data = getFormFields(event.target)
+  console.log('events', data)
+  api.createTask(data)
   // console.log(api.createTask)
       .then(ui.createTaskSuccess)
       .then(() => {
-        api.viewTasks()
-        .then(ui.viewTasksSuccess)
-        .catch(ui.viewTasksError)
+        api.getUserTask()
+        .then(ui.getUserTaskSuccess)
+        .catch(ui.getUserTaskError)
       })
       .catch(ui.createTaskError)
 }
 
-const onViewTasks = function (event) {
-  event.preventDefault()
-  api.viewTasks()
-  .then(ui.viewTasksSuccess)
-  .catch(ui.viewTasksError)
-}
+// const onViewTask = function (event) {
+//   event.preventDefault()
+//   api.viewTask()
+//   .then(ui.viewTaskSuccess)
+//   .catch(ui.viewTaskError)
+// }
 
 const onUpdateTask = function (event) {
   event.preventDefault()
@@ -77,12 +78,12 @@ const onUpdateTask = function (event) {
   api.updateTask(data, taskItem.id)
     .then(ui.updateTaskSuccess)
     .then(() => {
-      onViewTasks(taskItem.id)
+      getUserTask(taskItem.id)
     })
     .catch(ui.updateTaskError)
 }
 
-const onGetUserTasks = function (event) {
+const onGetUserTask = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   const user = data.user
@@ -108,9 +109,9 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
-  $('#createTask').on('click', onCreateTask)
-  $('#viewTasks').on('submit', onViewTasks)
-  $('#getUserTasks').on('submit', onGetUserTasks)
+  $('#createTask').on('submit', onCreateTask)
+  // $('#viewTask').on('submit', onViewTask)
+  $('#getUserTask').on('submit', onGetUserTask)
   $('#updateTask').on('submit', onUpdateTask)
   $('#deleteTask').on('submit', onDeleteTask)
 }

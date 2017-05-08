@@ -166,8 +166,8 @@
   <!-- /.modal-content -->
   <!-- /.modal-dialog -->
   <!-- /.modal -->
-<!-- <section class="container">
-  <h1>Delegate My Tasks</h1>
+<!-- <section class="container"> -->
+  <!-- <h1>Delegate My Tasks</h1>
 
     <div class="new-task-container box">
 
@@ -175,20 +175,18 @@
     <input type="text" id="new-task">
       <button id="addTask">Add Task</button>
 
-    </div>
+    </div> -->
 
-    <div class="todo-list box">
+    <!-- <div class="todo-list box"> -->
 
-      <h2>Incomplete Tasks</h2>
+      <!-- <h2>Incomplete Tasks</h2>
       <ul>
-        <li><input type="checkbox"><label></label></li>
-        <li><input type="checkbox"><label></label></li>
-        <li><input type="checkbox"><label></label></li>
+        <li><input type="checkbox"><label>task</lable></li>
       </ul>
 
-    </div>
+    </div> -->
 
-</section> -->
+<!-- </section> -->
         <!-- <h3>List of Tasks</h3> -->
 <!-- <div class="header"> -->
         <!-- <form id="taskList"> -->
@@ -205,15 +203,22 @@
   </ul>
 </body> -->
 <body>
-    <div class="form-group">
       <h1>Task</h1>
-    <form id="task">
-        <input id="taskList">
-        <button type="button" id="createTask">New Task</button>
+    <form id="createTask">
+        <input id="taskList" type="text" name="task[description]">
+        <button type="submit">New Task</button>
     </form>
+<ol id="task">
+</ol>
+    <!-- <ul class="list-unstyled" id="createTask"></ul>
+    <div class="complete-list box">
 
-        </div>
-    <ul class="list-unstyled" id="createTask"></ul>
+    <h2>Completed Tasks</h2>
+    <ul>
+      <li>Task Name <button id="deleteTask">Delete</button></li>
+
+    </ul> -->
+
 </body>
 <footer id="footer">
   <div class="container">
@@ -222,15 +227,7 @@
       </div>
     </div>
   </div>
-  <div class="complete-list box">
 
-  <h2>Completed Tasks</h2>
-  <ul>
-    <li>Task Name <button id="deleteTask">Delete</button></li>
-
-  </ul>
-
-</div>
 </footer>
 
 </html>
