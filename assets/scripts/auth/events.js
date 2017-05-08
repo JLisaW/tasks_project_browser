@@ -16,6 +16,7 @@ const onSignUp = function (event) {
        .catch(ui.autoSignInFailure)
     })
    .catch(ui.signUpFailure)
+  $('#sign-up').modal('hide')
 }
 
 const onSignIn = function (event) {
@@ -25,6 +26,7 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
+  $('#sign-in').modal('hide')
 }
 
 const onSignOut = function (event) {
@@ -34,7 +36,7 @@ const onSignOut = function (event) {
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
-  $('#signIn').modal('hide')
+  $('#sign-out').modal('hide')
 }
 
 const onChangePassword = function (event) {
@@ -49,12 +51,12 @@ const onChangePassword = function (event) {
 
 const onCreateTask = function (event) {
   event.preventDefault()
-  const data = getFormFields(event.target)
-  api.createTask(data)
-  console.log(api.createTask)
+  // const data = getFormFields(event.target)
+  api.createTask()
+  // console.log(api.createTask)
       .then(ui.createTaskSuccess)
       .then(() => {
-        api.viewTasks(data)
+        api.viewTasks()
         .then(ui.viewTasksSuccess)
         .catch(ui.viewTasksError)
       })

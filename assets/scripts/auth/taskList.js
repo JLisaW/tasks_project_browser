@@ -1,6 +1,5 @@
 'use strict'
 const userMessage = require('./ui.js')
-const onCreateTask = require('./events.js')
 
 // list of tasks
 const taskList = []
@@ -8,15 +7,13 @@ const taskList = []
 // one task
 const taskItem = document.getElementById('taskList').value
 
-$(document).ready(function () {
-  $('button').click(function () {
-    const onCreateTask = $('#createTask').append('<ul>' + $('input[name=task]').val())
-  })
-  taskList.push(onCreateTask)
-  // $('body').on('click', '#createTask', function () {
-  //   $(this).closest('ul').remove()
-  // })
-})
+function createTask () {
+  const taskItem = document.getElementById('taskList').value
+  const task = document.createTextNode(taskItem)
+  const newTask = document.createElement('li')
+  newTask.appendChild(task)
+  document.getElementById('createTask').appendChild(newTask)
+}
 
 const deleteTask = function () {
   console.log('delete task function fired')
