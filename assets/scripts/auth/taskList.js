@@ -7,6 +7,7 @@ const taskList = []
 // one task
 const taskItem = document.getElementById('taskList').value
 
+// create task function
 function createTask () {
   const taskItem = document.getElementById('taskList').value
   const task = document.createTextNode(taskItem)
@@ -17,10 +18,9 @@ function createTask () {
 
 const deleteTask = function () {
   console.log('delete task function fired')
-  const taskItem = document.getElementById('taskList').value
-  taskList.splice(taskList.id)
-  console.log(taskList.id)
-  return
+  const taskItem = this.parentNode
+  const remove = taskItem.parentNode
+  remove.removeChild(taskItem)
 }
 
 // update task function
@@ -40,7 +40,6 @@ function getUserTask () {
     taskList
   }
 }
-
 
 module.exports = {
   taskList,

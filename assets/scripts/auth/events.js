@@ -3,6 +3,7 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api.js')
 const ui = require('./ui.js')
+const taskItem = require('./taskList.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -72,8 +73,12 @@ const onViewTasks = function (event) {
 
 const onUpdateTask = function (event) {
   event.preventDefault()
-  api.updateTask()
+  const data = getFormFields(this)
+  api.updateTask(data, taskItem.id)
     .then(ui.updateTaskSuccess)
+    .then(() => {
+      onViewTasks(taskItem.id)
+    })
     .catch(ui.updateTaskError)
 }
 
