@@ -1,5 +1,6 @@
 'use strict'
 const userMessage = require('./ui.js')
+const onCreateTask = require('./events.js')
 
 // list of tasks
 const taskList = []
@@ -7,18 +8,17 @@ const taskList = []
 // one task
 const taskItem = document.getElementById('taskList').value
 
-// add task
-function createTask() {
-  console.log('task created')
-  const task = document.createElement('createTask').innerHTML
-  const taskItem = document.getElementById('createTask').value
-  if (taskItem === '') {
-    userMessage("You must add a task.")
-  }
-  return taskList.push(updateTask)
-}
+$(document).ready(function () {
+  $('button').click(function () {
+    const onCreateTask = $('#createTask').append('<ul>' + $('input[name=task]').val())
+  })
+  taskList.push(onCreateTask)
+  // $('body').on('click', '#createTask', function () {
+  //   $(this).closest('ul').remove()
+  // })
+})
 
-const deleteTask = function() {
+const deleteTask = function () {
   console.log('delete task function fired')
   const taskItem = document.getElementById('taskList').value
   taskList.splice(taskList.id)
@@ -34,17 +34,18 @@ const updateTask = function () {
 }
 
 // get task function
-function getUserTask() {
+function getUserTask () {
   const taskList = []
   const taskItem = document.getElementById('task').value
   if (taskItem !== null) {
-    userMessage("You have no incomplete tasks.")
+    userMessage('You have no incomplete tasks.')
   } else {
-  taskList
+    taskList
   }
 }
 
-module.exports {
+
+module.exports = {
   taskList,
   taskItem,
   createTask,

@@ -166,20 +166,34 @@
   <!-- /.modal-content -->
   <!-- /.modal-dialog -->
   <!-- /.modal -->
-<div class="container">
+<!-- <div class="container"> -->
 
         <h3>List of Tasks</h3>
-<ul>
-        <li id="taskList" class="editMode">
+<!-- <div class="header"> -->
+        <!-- <form id="taskList"> -->
           <!-- <input type="checkbox"> -->
-          <input type="text" placeholder="add task here">
+          <!-- <fieldset> -->
+          <!-- <input id="task" type="text" placeholder="add task here">
           <input type="submit" name="submit" id="createTask" value="new task" class="btn btn-custom">
-          <input type="submit" name="submit" id="deleteTask" value="delete task" class="btn btn-custom">
-          </li>
-</ul>
+          <input type="submit" name="submit" id="deleteTask" value="delete task" class="btn btn-custom"> -->
+        <!-- </fieldset> -->
+  <!-- </form> -->
+<!--
   </div>
+  <ul id="taskList">
+  </ul>
+</body> -->
+<body>
+    <div class="form-group">
+      <h1>Task</h1>
+    <form role="form">
+        <input type="text" class="form-control" placeholder="Your Task" name="task">
+    </form>
+    <button type="button" class="btn btn btn-primary">New Task</button>
+        </div>
+        <div></div>
+    <ul class="list-unstyled" id="createTask"></ul>
 </body>
-
 <footer id="footer">
   <div class="container">
     <div class="row">

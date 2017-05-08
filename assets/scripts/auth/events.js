@@ -49,9 +49,23 @@ const onChangePassword = function (event) {
 
 const onCreateTask = function (event) {
   event.preventDefault()
-  api.createTask()
+  const data = getFormFields(event.target)
+  api.createTask(data)
+  console.log(api.createTask)
       .then(ui.createTaskSuccess)
+      .then(() => {
+        api.viewTasks(data)
+        .then(ui.viewTasksSuccess)
+        .catch(ui.viewTasksError)
+      })
       .catch(ui.createTaskError)
+}
+
+const onViewTasks = function (event) {
+  event.preventDefault()
+  api.viewTasks()
+  .then(ui.viewTasksSuccess)
+  .catch(ui.viewTasksError)
 }
 
 const onUpdateTask = function (event) {
@@ -87,7 +101,8 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
-  $('#createTask').on('submit', onCreateTask)
+  $('#createTask').on('click', onCreateTask)
+  $('#viewTasks').on('submit', onViewTasks)
   $('#getUserTasks').on('submit', onGetUserTasks)
   $('#updateTask').on('submit', onUpdateTask)
   $('#deleteTask').on('submit', onDeleteTask)

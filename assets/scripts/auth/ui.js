@@ -71,6 +71,17 @@ const createTaskError = (data) => {
   userMessage('Something went wrong, please try again.')
 }
 
+const viewTasksSuccess = (data) => {
+  console.log('view task success')
+  store.task = data.task
+  userMessage('Here are your tasks.')
+}
+
+const viewTasksError = (data) => {
+  console.log('view task error')
+  userMessage('Something went wrong, please try again.')
+}
+
 const updateTaskSuccess = (data) => {
   console.log('update task success')
   store.task = data.task
@@ -127,5 +138,7 @@ module.exports = {
   createTaskError,
   createTaskSuccess,
   deleteTaskSuccess,
-  deleteTaskFailure
+  deleteTaskFailure,
+  viewTasksSuccess,
+  viewTasksError
 }
