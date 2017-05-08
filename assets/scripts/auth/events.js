@@ -58,19 +58,12 @@ const onCreateTask = function (event) {
   // console.log(api.createTask)
       .then(ui.createTaskSuccess)
       .then(() => {
-        api.getUserTask()
-        .then(ui.getUserTaskSuccess)
-        .catch(ui.getUserTaskError)
+        api.getUserTasks()
+        .then(ui.getUserTasksSuccess)
+        .catch(ui.getUserTasksError)
       })
       .catch(ui.createTaskError)
 }
-
-// const onViewTask = function (event) {
-//   event.preventDefault()
-//   api.viewTask()
-//   .then(ui.viewTaskSuccess)
-//   .catch(ui.viewTaskError)
-// }
 
 const onUpdateTask = function (event) {
   event.preventDefault()
@@ -78,22 +71,17 @@ const onUpdateTask = function (event) {
   api.updateTask(data, taskItem.id)
     .then(ui.updateTaskSuccess)
     .then(() => {
-      getUserTask(taskItem.id)
+      api.getUserTasks(taskItem.id)
     })
     .catch(ui.updateTaskError)
 }
 
-const onGetUserTask = function (event) {
+const onGetUserTasks = function (event) {
   event.preventDefault()
-  const data = getFormFields(event.target)
-  const user = data.user
-  if (user.id.length !== 0) {
-    api.show(user.id)
-        .then(ui.onSuccess)
-        .catch(ui.onError)
-  } else {
-    console.log('Please provide a user id.')
-  }
+  api.getUserTasks()
+        .then(ui.getUserTasksSuccess)
+        .catch(ui.getUserTasksError)
+  console.log('Please provide a user id.')
 }
 
 const onDeleteTask = function (event) {
@@ -111,7 +99,8 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword)
   $('#createTask').on('submit', onCreateTask)
   // $('#viewTask').on('submit', onViewTask)
-  $('#getUserTask').on('submit', onGetUserTask)
+  $('#getUserTasks').on('click', onGetUserTasks)
+  // $('#getUserTask').on('submit', onGetUserTask)
   $('#updateTask').on('submit', onUpdateTask)
   $('#deleteTask').on('submit', onDeleteTask)
 }

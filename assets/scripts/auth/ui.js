@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
+const showTasksHB = require('../taskHandlebars.handlebars')
 
 const signUpSuccess = (data) => {
   console.log('sign up success')
@@ -63,32 +64,21 @@ const changePasswordFailure = (data) => {
 const createTaskSuccess = (data) => {
   console.log('create task success')
   console.log(data)
-  store.task = data.task
+  store.userTasks = data.tasks
   userMessage('New Task Created!')
 }
 
 const createTaskError = (data) => {
-  console.log('ui', data.task)
+  console.log('ui', data.tasks)
   console.log(store.user.token)
-  console.log(store.user.task)
+  console.log(store.user.tasks)
   console.log('create task error')
   userMessage('Something went wrong, please try again.')
 }
 
-// const viewTaskSuccess = (data) => {
-//   console.log('view task success')
-//   store.task = data.task
-//   userMessage('Here are your tasks.')
-// }
-//
-// const viewTaskError = (data) => {
-//   console.log('view task error')
-//   userMessage('Something went wrong, please try again.')
-// }
-
 const updateTaskSuccess = (data) => {
   console.log('update task success')
-  store.task = data.task
+  store.userTasks = data.tasks
   console.log('update task stored')
   userMessage('You have successfullly updated a task.')
 }
@@ -98,13 +88,21 @@ const updateTaskFailure = (data) => {
   userMessage('Something went wrong, please try again.')
 }
 
-const getUserTaskSuccess = (data) => {
+const getUserTasksSuccess = (data) => {
   console.log('get task success')
-  store.tasks = data.tasks
-  userMessage('Here are your tasks.')
+  store.userTasks = data.tasks
+  const showTaskHtml = showTasksHB({ tasks: store.userTasks })
+  console.log(data)
+  $('#content').empty()
+  $('#content').append(showTaskHtml)
+  // userMessage('Here are your tasks.')
 }
 
-const getUserTaskFailure = (data) => {
+const clearUserTask = () => {
+  $('.content').empty()
+}
+
+const getUserTasksFailure = (data) => {
   console.log('get task failure')
   userMessage('Something went wrong, please try again.')
 }
@@ -135,12 +133,13 @@ module.exports = {
   signOutFailure,
   changePasswordSuccess,
   changePasswordFailure,
-  getUserTaskFailure,
-  getUserTaskSuccess,
+  getUserTasksFailure,
+  getUserTasksSuccess,
   updateTaskFailure,
   updateTaskSuccess,
   createTaskError,
   createTaskSuccess,
   deleteTaskSuccess,
-  deleteTaskFailure
+  deleteTaskFailure,
+  clearUserTask
 }

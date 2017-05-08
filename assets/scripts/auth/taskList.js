@@ -14,6 +14,7 @@ function createTask () {
   const newTask = document.createElement('li')
   newTask.appendChild(task)
   document.getElementById('createTask').appendChild(newTask)
+  taskList.value = ''
 }
 
 const deleteTask = function () {

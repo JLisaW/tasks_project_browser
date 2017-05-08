@@ -80,9 +80,9 @@ const deleteTask = (data) => {
   })
 }
 
-const getUserTask = (data) => {
+const getUserTasks = () => {
   return $.ajax({
-    url: config.apiOrigin + '/tasks',
+    url: config.apiOrigin + '/tasks/',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -99,5 +99,5 @@ module.exports = {
   createTask,
   updateTask,
   deleteTask,
-  getUserTask
+  getUserTasks
 }
