@@ -59,11 +59,6 @@ const changePasswordFailure = (data) => {
 // APP FUNCTIONS BEGIN
 // APP FUNCTIONS BEGIN
 
-const refreshClickHandlers = () => {
-  $('.update-task-button').on('click', onUpdateTask)
-  $('.delete-task-button').on('click', onDeleteTask)
-}
-
 const refreshTable = () => {
   const showTaskHtml = showTasksHB({ tasks: store.userTasks })
   $('#content').empty()
@@ -74,21 +69,20 @@ const refreshTable = () => {
 
 const createTaskSuccess = (data) => {
   console.log('create task success')
-  console.log(data)
   store.userTasks = data.tasks
 }
 
 const createTaskError = (data) => {
-  console.log('ui', data.tasks)
-  console.log(store.user.token)
-  console.log(store.user.tasks)
   console.log('create task error')
 }
 
 const updateTaskSuccess = (data) => {
   console.log('update task success')
   store.userTasks = data.tasks
-  console.log('update task stored')
+  api.updateTask(data)
+    .then(updateTaskSuccess)
+    .catch(updateTaskFailure)
+  refreshTable()
 }
 
 const updateTaskFailure = (data) => {
