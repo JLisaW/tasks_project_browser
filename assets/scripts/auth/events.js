@@ -85,8 +85,8 @@ const onGetUserTasks = function (event) {
 const onDeleteTask = function (event) {
   event.preventDefault()
   console.log('delete task working')
-  const data = getFormFields(event.target)
-  api.deleteTask(data)
+  const taskId = $(this).attr('taskid')
+  api.deleteTask(taskId)
     .then(ui.deleteTaskSuccess)
     .catch(ui.deleteTaskFailure)
 }
@@ -99,7 +99,7 @@ const addHandlers = () => {
   $('#createTask').on('submit', onCreateTask)
   $('#getUserTasks').on('click', onGetUserTasks)
   $('#updateTask').on('submit', onUpdateTask)
-  $('.deleteTask').on('click', onDeleteTask)
+  $('#content').on('click', '#deleteTask', onDeleteTask)
 }
 
 module.exports = {

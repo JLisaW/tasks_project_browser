@@ -11,8 +11,8 @@
       <tr>
         <td>{{task.id}}</td>
         <td>{{task.description}}</td>
-        <td><button data-id="{{task.id}}" class="btn btn-danger" deleteTask>Delete</button></td>
-        <td><button id="{{updateTask}}" value="update" class="btn btn-info">Edit</button></td>
+        <td><button id="deleteTask" taskId="{{task.id}}" type="click" class="btn btn-danger">Delete</button></td>
+        <td><button value="update" class="btn btn-info">Edit</button></td>
       </tr>
 
 </table>

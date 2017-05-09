@@ -103,19 +103,16 @@ const getUserTasksSuccess = (data) => {
 //   $('#content').empty()
 // }
 
-const getUserTasksFailure = (data) => {
+const getUserTasksFailure = () => {
   console.log('get task failure')
-  userMessage('Something went wrong, please try again.')
 }
 
-const deleteTaskSuccess = (data) => {
+const deleteTaskSuccess = () => {
   console.log('delete task success')
-  userMessage('You have deleted your task.')
 }
 
 const deleteTaskFailure = (data) => {
   console.log('delete task failure')
-  userMessage('Something went wrong, please try again.')
 }
 
 const userMessage = (txt) => {
