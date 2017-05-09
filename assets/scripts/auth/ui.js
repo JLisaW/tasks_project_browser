@@ -76,15 +76,15 @@ const getUserTasksSuccess = (data) => {
 //   $('#content').empty()
 // }
 
-const getUserTasksFailure = (data) => {
+const getUserTasksFailure = () => {
   console.log('get task failure')
 }
 
-const deleteTaskSuccess = (data) => {
+const deleteTaskSuccess = () => {
   console.log('delete task success')
 }
 
-const deleteTaskFailure = (data) => {
+const deleteTaskFailure = () => {
   console.log('delete task failure')
 }
 

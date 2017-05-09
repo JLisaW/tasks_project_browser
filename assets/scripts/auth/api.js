@@ -70,15 +70,14 @@ const updateTask = function (data) {
   })
 }
 
-const deleteTask = (data) => {
+const deleteTask = (taskId) => {
   console.log('delete task clicked')
   return $.ajax({
-    url: config.apiOrigin + '/tasks/' + data.task.id,
+    url: config.apiOrigin + '/tasks/' + taskId,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data
+    }
   })
 }
 
