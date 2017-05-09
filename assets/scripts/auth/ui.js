@@ -63,7 +63,7 @@ const refreshTable = () => {
   const showTaskHtml = showTasksHB({ tasks: store.userTasks })
   $('#content').empty()
   $('#content').append(showTaskHtml)
-  $('.update-task-button').on('click', onUpdateTask)
+  $('#update-task-by-id-form').on('submit', onUpdateTask)
   $('.delete-task-button').on('click', onDeleteTask)
 }
 
@@ -76,12 +76,12 @@ const createTaskError = (data) => {
   console.log('create task error')
 }
 
-const updateTaskSuccess = (data) => {
+const updateTaskSuccess = (taskId) => {
   console.log('update task success')
-  store.userTasks = data.tasks
-  api.updateTask(data)
-    .then(updateTaskSuccess)
-    .catch(updateTaskFailure)
+  store.userTasks = taskId.tasks
+  // api.updateTask(taskId)
+  //   .then(updateTaskSuccess)
+  //   .catch(updateTaskFailure)
   refreshTable()
 }
 
@@ -104,8 +104,6 @@ const deleteTaskSuccess = () => {
   api.getUserTasks()
     .then(getUserTasksSuccess)
     .catch(getUserTasksFailure)
-  // $('.content').empty()
-  // $('input').val('')
 }
 
 const deleteTaskFailure = (data) => {
@@ -121,22 +119,16 @@ const onDeleteTask = function (event) {
   api.deleteTask(taskId)
     .then(deleteTaskSuccess)
     .catch(deleteTaskFailure)
-  // $('input').val('')
-  // $('#content').empty()
 }
 
 const onUpdateTask = function (event) {
-  console.log('update task function')
+  // console.log('update task function')
   event.preventDefault()
-  const taskId = $(event.target).attr('taskId')
   const data = getFormFields(event.target)
-  api.updateTask(taskId, data)
+  // data.task.id = taskId
+  debugger
+  api.updateTask(data)
     .then(updateTaskSuccess)
-    .then(() => {
-      api.getUserTasks()
-      .then(getUserTasksSuccess)
-      .catch(getUserTasksFailure)
-    })
     .catch(updateTaskFailure)
 }
 

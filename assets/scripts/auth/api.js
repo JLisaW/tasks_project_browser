@@ -55,18 +55,18 @@ const createTask = function (data) {
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: data
   })
 }
 
-const updateTask = function (taskId, data) {
+const updateTask = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/tasks/' + taskId,
+    url: config.apiOrigin + '/tasks/' + data.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: data
   })
 }
 
