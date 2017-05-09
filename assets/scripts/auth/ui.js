@@ -5,67 +5,43 @@ const showTasksHB = require('../taskHandlebars.handlebars')
 
 const signUpSuccess = (data) => {
   console.log('sign up success')
-  $('#signUp').modal('hide')
-  userMessage('You have successfullly signed up, please sign in.')
 }
 
 const signUpFailure = (error) => {
   console.log(error)
-  userMessage('Please choose a different username.')
 }
 
 const signInSuccess = (data) => {
   console.log('sign in success')
   store.user = data.user
   console.log(data.user)
-  userMessage('You have successfully signed in.')
-  $('#authentication').modal('hide')
 }
 
 const signInFailure = (error) => {
   console.log(error)
-  userMessage('Sign in unsuccessful, please try again.')
-}
-
-const autoSignInSuccess = (data) => {
-  console.log('auto sign in success')
-  store.user = data.user
-  userMessage('You are successfully signed in.')
-  $('#authentication').modal('hide')
-}
-
-const autoSignInFailure = (error) => {
-  console.log(error)
-  userMessage('Sign in unsuccessful, please try again.')
 }
 
 const signOutSuccess = (data) => {
   console.log('sign out success')
   store.user = null
-  userMessage('You have successfully signed out.')
 }
 
 const signOutFailure = (data) => {
   console.log('sign out failure')
-  userMessage('You are still signed in, please try again.')
 }
 
 const changePasswordSuccess = (data) => {
   console.log('password change success')
-  userMessage('Password Change Successful.')
-  $('#change-password').modal('hide')
 }
 
 const changePasswordFailure = (data) => {
   console.log('password change failure')
-  userMessage('Unsuccessful password change, please try again.')
 }
 
 const createTaskSuccess = (data) => {
   console.log('create task success')
   console.log(data)
   store.userTasks = data.tasks
-  userMessage('New Task Created!')
 }
 
 const createTaskError = (data) => {
@@ -73,19 +49,16 @@ const createTaskError = (data) => {
   console.log(store.user.token)
   console.log(store.user.tasks)
   console.log('create task error')
-  userMessage('Something went wrong, please try again.')
 }
 
 const updateTaskSuccess = (data) => {
   console.log('update task success')
   store.userTasks = data.tasks
   console.log('update task stored')
-  userMessage('You have successfullly updated a task.')
 }
 
 const updateTaskFailure = (data) => {
   console.log('update task failure')
-  userMessage('Something went wrong, please try again.')
 }
 
 const getUserTasksSuccess = (data) => {
@@ -105,22 +78,14 @@ const getUserTasksSuccess = (data) => {
 
 const getUserTasksFailure = (data) => {
   console.log('get task failure')
-  userMessage('Something went wrong, please try again.')
 }
 
 const deleteTaskSuccess = (data) => {
   console.log('delete task success')
-  userMessage('You have deleted your task.')
 }
 
 const deleteTaskFailure = (data) => {
   console.log('delete task failure')
-  userMessage('Something went wrong, please try again.')
-}
-
-const userMessage = (txt) => {
-  const message = $('#message')[0]
-  $(message).text(txt)
 }
 
 module.exports = {
@@ -128,8 +93,6 @@ module.exports = {
   signUpFailure,
   signInSuccess,
   signInFailure,
-  autoSignInSuccess,
-  autoSignInFailure,
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
