@@ -63,32 +63,12 @@ const onCreateTask = function (event) {
       .catch(ui.createTaskError)
 }
 
-const onUpdateTask = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
-  api.updateTask(data)
-    .then(ui.updateTaskSuccess)
-    .then(() => {
-      api.getUserTasks(data)
-    })
-    .catch(ui.updateTaskError)
-}
-
 const onGetUserTasks = function (event) {
   event.preventDefault()
   api.getUserTasks()
         .then(ui.getUserTasksSuccess)
         .catch(ui.getUserTasksError)
   console.log('Please provide a user id.')
-}
-
-const onDeleteTask = function (event) {
-  event.preventDefault()
-  console.log('delete task working')
-  const taskId = $(this).attr('taskid')
-  api.deleteTask(taskId)
-    .then(ui.deleteTaskSuccess)
-    .catch(ui.deleteTaskFailure)
 }
 
 const addHandlers = () => {
@@ -98,8 +78,6 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword)
   $('#createTask').on('submit', onCreateTask)
   $('#getUserTasks').on('click', onGetUserTasks)
-  $('#updateTask').on('submit', onUpdateTask)
-  $('#content').on('click', '#deleteTask', onDeleteTask)
 }
 
 module.exports = {

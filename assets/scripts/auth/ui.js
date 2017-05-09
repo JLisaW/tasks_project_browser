@@ -1,71 +1,81 @@
 'use strict'
 
 const store = require('../store.js')
+const api = require('./api')
 const showTasksHB = require('../taskHandlebars.handlebars')
+const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
   console.log('sign up success')
-  $('#signUp').modal('hide')
-  userMessage('You have successfullly signed up, please sign in.')
 }
 
 const signUpFailure = (error) => {
   console.log(error)
-  userMessage('Please choose a different username.')
 }
 
 const signInSuccess = (data) => {
   console.log('sign in success')
   store.user = data.user
   console.log(data.user)
-  userMessage('You have successfully signed in.')
-  $('#authentication').modal('hide')
 }
 
 const signInFailure = (error) => {
   console.log(error)
-  userMessage('Sign in unsuccessful, please try again.')
 }
 
 const autoSignInSuccess = (data) => {
   console.log('auto sign in success')
   store.user = data.user
-  userMessage('You are successfully signed in.')
-  $('#authentication').modal('hide')
+  $('#authentication').signInmodal('hide')
 }
 
 const autoSignInFailure = (error) => {
   console.log(error)
-  userMessage('Sign in unsuccessful, please try again.')
 }
 
 const signOutSuccess = (data) => {
   console.log('sign out success')
   store.user = null
-  userMessage('You have successfully signed out.')
 }
 
 const signOutFailure = (data) => {
   console.log('sign out failure')
-  userMessage('You are still signed in, please try again.')
 }
 
 const changePasswordSuccess = (data) => {
   console.log('password change success')
-  userMessage('Password Change Successful.')
-  $('#change-password').modal('hide')
+  $('#change-password').changePWmodal('hide')
 }
 
 const changePasswordFailure = (data) => {
   console.log('password change failure')
-  userMessage('Unsuccessful password change, please try again.')
+}
+
+// END OF AUTH SECTION
+// END OF AUTH SECTION
+// END OF AUTH SECTION
+
+// APP FUNCTIONS BEGIN
+// APP FUNCTIONS BEGIN
+// APP FUNCTIONS BEGIN
+
+const refreshClickHandlers = () => {
+  $('.update-task-button').on('click', onUpdateTask)
+  $('.delete-task-button').on('click', onDeleteTask)
+}
+
+const refreshTable = () => {
+  const showTaskHtml = showTasksHB({ tasks: store.userTasks })
+  $('#content').empty()
+  $('#content').append(showTaskHtml)
+  $('.update-task-button').on('click', onUpdateTask)
+  $('.delete-task-button').on('click', onDeleteTask)
 }
 
 const createTaskSuccess = (data) => {
   console.log('create task success')
   console.log(data)
   store.userTasks = data.tasks
-  userMessage('New Task Created!')
 }
 
 const createTaskError = (data) => {
@@ -73,35 +83,22 @@ const createTaskError = (data) => {
   console.log(store.user.token)
   console.log(store.user.tasks)
   console.log('create task error')
-  userMessage('Something went wrong, please try again.')
 }
 
 const updateTaskSuccess = (data) => {
   console.log('update task success')
   store.userTasks = data.tasks
   console.log('update task stored')
-  userMessage('You have successfullly updated a task.')
 }
 
 const updateTaskFailure = (data) => {
   console.log('update task failure')
-  userMessage('Something went wrong, please try again.')
 }
 
 const getUserTasksSuccess = (data) => {
-  console.log('get task success')
-  console.log('get tasks function fired')
   store.userTasks = data.tasks
-  console.log(store.userTasks)
-  const showTaskHtml = showTasksHB({ tasks: store.userTasks })
-  console.log(data)
-  $('#content').append(showTaskHtml)
-  console.log('append working')
+  refreshTable()
 }
-
-// const clearUserTask = () => {
-//   $('#content').empty()
-// }
 
 const getUserTasksFailure = () => {
   console.log('get task failure')
@@ -109,15 +106,44 @@ const getUserTasksFailure = () => {
 
 const deleteTaskSuccess = () => {
   console.log('delete task success')
+  refreshTable()
+  api.getUserTasks()
+    .then(getUserTasksSuccess)
+    .catch(getUserTasksFailure)
+  // $('.content').empty()
+  // $('input').val('')
 }
 
 const deleteTaskFailure = (data) => {
   console.log('delete task failure')
 }
 
-const userMessage = (txt) => {
-  const message = $('#message')[0]
-  $(message).text(txt)
+const onDeleteTask = function (event) {
+  event.preventDefault()
+  console.log('delete task working')
+  console.log(event.target)
+  const taskId = $(event.target).attr('taskid')
+  refreshTable()
+  api.deleteTask(taskId)
+    .then(deleteTaskSuccess)
+    .catch(deleteTaskFailure)
+  // $('input').val('')
+  // $('#content').empty()
+}
+
+const onUpdateTask = function (event) {
+  console.log('update task function')
+  event.preventDefault()
+  const taskId = $(event.target).attr('taskId')
+  const data = getFormFields(event.target)
+  api.updateTask(taskId, data)
+    .then(updateTaskSuccess)
+    .then(() => {
+      api.getUserTasks()
+      .then(getUserTasksSuccess)
+      .catch(getUserTasksFailure)
+    })
+    .catch(updateTaskFailure)
 }
 
 module.exports = {
@@ -139,5 +165,4 @@ module.exports = {
   createTaskSuccess,
   deleteTaskSuccess,
   deleteTaskFailure
-  // clearUserTask
 }
