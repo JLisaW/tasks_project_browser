@@ -96,9 +96,7 @@ const getUserTasksSuccess = (data) => {
   const showTaskHtml = showTasksHB({ tasks: store.userTasks })
   console.log(data)
   $('#content').append(showTaskHtml)
-  $('#content').text('')
-  // $('#content').empty()
-  // userMessage('Here are your tasks.')
+  console.log('append working')
 }
 
 // const clearUserTask = () => {

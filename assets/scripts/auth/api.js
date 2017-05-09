@@ -80,13 +80,14 @@ const deleteTask = (data) => {
   })
 }
 
-const getUserTasks = () => {
+const getUserTasks = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/tasks/',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    }
+    },
+    data
   })
 }
 

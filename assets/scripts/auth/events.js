@@ -3,7 +3,6 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api.js')
 const ui = require('./ui.js')
-const taskItem = require('./taskList.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -67,10 +66,10 @@ const onCreateTask = function (event) {
 const onUpdateTask = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  api.updateTask(data, taskItem.id)
+  api.updateTask(data)
     .then(ui.updateTaskSuccess)
     .then(() => {
-      api.getUserTasks(taskItem.id)
+      api.getUserTasks(data)
     })
     .catch(ui.updateTaskError)
 }
@@ -97,9 +96,7 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
   $('#createTask').on('submit', onCreateTask)
-  // $('#viewTask').on('submit', onViewTask)
   $('#getUserTasks').on('click', onGetUserTasks)
-  // $('#getUserTask').on('submit', onGetUserTask)
   $('#updateTask').on('submit', onUpdateTask)
   $('#deleteTask').on('submit', onDeleteTask)
 }

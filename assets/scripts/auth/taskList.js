@@ -53,7 +53,7 @@ module.exports = {
   taskList,
   taskItem,
   createTask,
-  deleteTask,
+  deleteTask
   // updateTask,
-  getUserTask
+  // getUserTask
 }
