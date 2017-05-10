@@ -28,7 +28,8 @@ const signInFailure = (response) => {
 
 const signOutSuccess = (data) => {
   store.user = null
-  $('#signOutModal').modal('toggle')
+  $('#content').empty()
+  userMessage('You have signed out.')
 }
 
 const signOutFailure = (response) => {
