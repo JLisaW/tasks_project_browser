@@ -11,9 +11,7 @@ const signUpSuccess = (data) => {
 
 const signUpFailure = (response) => {
  userMessage('Please choose a different username.')
-const signUpFailure = (error) => {
-  console.log(error)
-}
+ }
 
 const signInSuccess = (data) => {
   console.log('sign in success')
@@ -23,7 +21,7 @@ const signInSuccess = (data) => {
 
 const signInFailure = (response) => {
   userMessage('Sign in unsuccessful, please try again.')
-
+}
 
 const signOutSuccess = (data) => {
   console.log('sign out success')
@@ -32,6 +30,7 @@ const signOutSuccess = (data) => {
 
 const signOutFailure = (response) => {
   userMessage('You are still signed in, please try again.')
+}
 
 const changePasswordSuccess = (data) => {
   console.log('password change success')
@@ -75,7 +74,6 @@ const updateTaskSuccess = (taskId) => {
 const updateTaskFailure = (data) => {
   userMessage('Something went wrong, please try again.')
   store.userTasks = data.tasks
-  console.log('update task stored')
 }
 
 const getUserTasksSuccess = (data) => {
