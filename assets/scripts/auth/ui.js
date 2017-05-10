@@ -12,7 +12,7 @@ const signUpSuccess = (data) => {
 
 const signUpFailure = (response) => {
   $('#signUpModal').modal('toggle')
-  userMessage('Please choose a different username.')
+  userMessage('Sign up unsuccessful, please try again.')
 }
 
 const signInSuccess = (data) => {
@@ -39,11 +39,12 @@ const signOutFailure = (response) => {
 
 const changePasswordSuccess = (data) => {
   $('#changePWModal').modal('toggle')
+  userMessage('Your password has been changed.')
 }
 
-const changePasswordFailure = (response) => {
+const changePasswordFailure = () => {
   $('#changePWModal').modal('toggle')
-  userMessage('Unsuccessful password change, please try again.')
+  userMessage('Unsuccessful password change.  Did you sign in?')
 }
 
 // END OF AUTH SECTION

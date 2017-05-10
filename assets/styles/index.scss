@@ -4,20 +4,35 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 /*    --------------------------------------------------
 	:: Login Section
 	-------------------------------------------------- */
-
-
-#authentication .form-wrap {
-    width: 30%;
-    margin: 0 auto;
+.container-fluid {
+  background-color: #d2e1dd
 }
+
+li a {
+  // background-color: black;
+  width:  300px;
+  height: 25px;
+  border-radius: 5px;
+  margin: -8px 5px 0 -10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    // background-color: #333;
+}
+
+li {
+    float: right;
+  }
 
 #authentication h1 {
     color: #036;
-    font-size: 18px;
+    // font-size: 35px;
     text-align: center;
     font-weight: bold;
-    padding-bottom: 20px;
-    padding-top: 50px;
 }
 
 #authentication .form-group {
@@ -31,7 +46,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 #sign-in .link {
   font-size: 13px;
-	display: block;
 }
 
 #sign-out .link {
@@ -52,6 +66,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 #change-password .btn.btn-custom {
   font-size: 14px;
 	margin-bottom: 20px;
+
 }
 #change-password .link {
   font-size: 13px;
@@ -89,27 +104,8 @@ li{
   border-bottom:1px dotted #CCC;
 }
 
-.delete {
-  float:right;
-}
-
-/*    --------------------------------------------------
-    :: Footer
-	-------------------------------------------------- */
-#footer {
-    color: #699;
-    font-size: 12px;
-    text-align: center;
-}
-#footer p {
-    margin-bottom: 0;
-}
-#footer a {
-    color: inherit;
-}
-
 #message {
    text-align: center;
-   color: #d2e1dd;
-   font-size: 15px
+   color: #036;
+   font-size: 20px
  }
