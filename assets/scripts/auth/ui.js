@@ -7,38 +7,42 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
   $('#signUpModal').modal('toggle')
+  userMessage('You are now signed up.')
 }
 
 const signUpFailure = (response) => {
+  $('#signUpModal').modal('toggle')
   userMessage('Please choose a different username.')
 }
 
 const signInSuccess = (data) => {
   console.log('sign in success')
   store.user = data.user
-  console.log(data.user)
   $('#signInModal').modal('toggle')
+  userMessage('You are now signed in.')
 }
 
 const signInFailure = (response) => {
+  $('#signInModal').modal('toggle')
   userMessage('Sign in unsuccessful, please try again.')
 }
 
 const signOutSuccess = (data) => {
-  console.log('sign out success')
+  $('#signOutModal').modal('toggle')
   store.user = null
 }
 
 const signOutFailure = (response) => {
+  $('#signOutModal').modal('toggle')
   userMessage('You are still signed in, please try again.')
 }
 
 const changePasswordSuccess = (data) => {
-  console.log('password change success')
-  $('#change-password').changePWmodal('hide')
+  $('#changePWModal').modal('toggle')
 }
 
 const changePasswordFailure = (response) => {
+  $('#changePWModal').modal('toggle')
   userMessage('Unsuccessful password change, please try again.')
 }
 
@@ -60,6 +64,7 @@ const refreshTable = () => {
 
 const createTaskSuccess = (data) => {
   store.userTasks = data.tasks
+  $('input').val('')
 }
 
 const createTaskError = (data) => {
