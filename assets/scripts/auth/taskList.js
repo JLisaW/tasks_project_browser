@@ -17,7 +17,7 @@ function createTask () {
 }
 
 const deleteTask = function () {
-  console.log('delete task function fired')
+  ('delete task function fired')
   const taskItem = this.parentNode
   const remove = taskItem.parentNode
   remove.removeChild(taskItem)
@@ -25,7 +25,7 @@ const deleteTask = function () {
 
 // // update task function
 // const updateTask = function () {
-//   console.log('add task')
+//   ('add task')
 //   const taskItem = createTask(newTask.value)
 //   // taskList.push(updateTask)
 //   taskUl.appendChild(taskItem)
@@ -34,7 +34,7 @@ const deleteTask = function () {
 
 // get task function
 // function getAllTasks () {
-//   console.log('get all tasks function')
+//   ('get all tasks function')
 //   const taskList = []
 //   const taskItem = document.getElementById('task').value
 //   return taskList

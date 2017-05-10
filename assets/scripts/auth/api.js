@@ -15,15 +15,7 @@ const signIn = (data) => {
   return $.ajax({
     url: config.apiOrigin + '/sign-in',
     method: 'POST',
-    data
-  })
-}
-
-const autoSignIn = (data) => {
-  return $.ajax({
-    url: config.apiOrigin + '/sign-in',
-    method: 'POST',
-    data
+    data: data
   })
 }
 
@@ -44,7 +36,7 @@ const changePassword = (data) => {
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: data
   })
 }
 
@@ -71,7 +63,6 @@ const updateTask = function (data) {
 }
 
 const deleteTask = (taskId) => {
-  console.log('delete task clicked')
   return $.ajax({
     url: config.apiOrigin + '/tasks/' + taskId,
     method: 'DELETE',
@@ -88,7 +79,7 @@ const getUserTasks = (data) => {
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: data
   })
 }
 
@@ -96,7 +87,6 @@ module.exports = {
   signUp,
   signIn,
   signOut,
-  autoSignIn,
   changePassword,
   createTask,
   updateTask,

@@ -7,7 +7,7 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
   $('#signUpModal').modal('toggle')
-  userMessage('You are now signed up.')
+  userMessage('You are now signed up, please sign in.')
 }
 
 const signUpFailure = (response) => {
@@ -16,7 +16,6 @@ const signUpFailure = (response) => {
 }
 
 const signInSuccess = (data) => {
-  console.log('sign in success')
   store.user = data.user
   $('#signInModal').modal('toggle')
   userMessage('You are now signed in.')
@@ -42,11 +41,10 @@ const changePasswordSuccess = (data) => {
   userMessage('Your password has been changed.')
 }
 
-const changePasswordFailure = () => {
+const changePasswordFailure = (response) => {
   $('#changePWModal').modal('toggle')
   userMessage('Unsuccessful password change.  Did you sign in?')
 }
-
 // END OF AUTH SECTION
 // END OF AUTH SECTION
 // END OF AUTH SECTION
@@ -73,7 +71,6 @@ const createTaskError = (data) => {
 }
 
 const updateTaskSuccess = (taskId) => {
-  console.log('update task success')
   store.userTasks = taskId.tasks
   refreshTable()
 }
@@ -93,7 +90,6 @@ const getUserTasksFailure = () => {
 }
 
 const deleteTaskSuccess = () => {
-  console.log('delete task success')
   refreshTable()
   api.getUserTasks()
     .then(getUserTasksSuccess)
@@ -106,8 +102,6 @@ const deleteTaskFailure = (data) => {
 
 const onDeleteTask = function (event) {
   event.preventDefault()
-  console.log('delete task working')
-  console.log(event.target)
   const taskId = $(event.target).attr('taskid')
   refreshTable()
   api.deleteTask(taskId)

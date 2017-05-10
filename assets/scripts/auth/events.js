@@ -7,7 +7,6 @@ const ui = require('./ui.js')
 const onSignUp = function (event) {
   event.preventDefault(event)
   const data = getFormFields(this)
-  console.log('sign up success')
   api.signUp(data)
     .then(ui.signUpSuccess)
    .catch(ui.signUpFailure)
@@ -15,7 +14,6 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
-  console.log('sign in success')
   event.preventDefault()
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -24,7 +22,6 @@ const onSignIn = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('sign out success')
   const data = getFormFields(event.target)
   api.signOut(data)
     .then(ui.signOutSuccess)
@@ -33,7 +30,6 @@ const onSignOut = function (event) {
 
 const onChangePassword = function (event) {
   event.preventDefault()
-  console.log('change password success')
   const data = getFormFields(event.target)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
@@ -43,7 +39,6 @@ const onChangePassword = function (event) {
 const onCreateTask = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('events', data)
   api.createTask(data)
       .then(ui.createTaskSuccess)
       .then(() => {
@@ -59,7 +54,6 @@ const onGetUserTasks = function (event) {
   api.getUserTasks()
         .then(ui.getUserTasksSuccess)
         .catch(ui.getUserTasksError)
-  console.log('Please provide a user id.')
 }
 
 const addHandlers = () => {
