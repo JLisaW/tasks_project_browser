@@ -11,6 +11,8 @@ const signUpSuccess = (data) => {
 
 const signUpFailure = (response) => {
  userMessage('Please choose a different username.')
+const signUpFailure = (error) => {
+  console.log(error)
 }
 
 const signInSuccess = (data) => {
@@ -21,7 +23,7 @@ const signInSuccess = (data) => {
 
 const signInFailure = (response) => {
   userMessage('Sign in unsuccessful, please try again.')
-}
+
 
 const signOutSuccess = (data) => {
   console.log('sign out success')
@@ -30,7 +32,6 @@ const signOutSuccess = (data) => {
 
 const signOutFailure = (response) => {
   userMessage('You are still signed in, please try again.')
-}
 
 const changePasswordSuccess = (data) => {
   console.log('password change success')
@@ -73,6 +74,8 @@ const updateTaskSuccess = (taskId) => {
 
 const updateTaskFailure = (data) => {
   userMessage('Something went wrong, please try again.')
+  store.userTasks = data.tasks
+  console.log('update task stored')
 }
 
 const getUserTasksSuccess = (data) => {
@@ -108,7 +111,6 @@ const onDeleteTask = function (event) {
 }
 
 const onUpdateTask = function (event) {
-  // console.log('update task function')
   event.preventDefault()
   const data = getFormFields(event.target)
   api.updateTask(data)
@@ -116,10 +118,6 @@ const onUpdateTask = function (event) {
     .catch(updateTaskFailure)
 }
 
-const userMessage = (txt) => {
-  const message = $('#message')[0]
-  $(message).text(txt)
-}
 
 module.exports = {
   signUpSuccess,

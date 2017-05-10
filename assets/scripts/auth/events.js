@@ -5,18 +5,17 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 
 const onSignUp = function (event) {
-  event.preventDefault()
+  event.preventDefault(event)
   const data = getFormFields(this)
   console.log('sign up success')
   api.signUp(data)
     .then(ui.signUpSuccess)
     .then(() => {
-      api.autoSignIn(data)
-       .then(ui.autoSignInSuccess)
-       .catch(ui.autoSignInFailure)
+      api.signIn(data)
+       .then(ui.signInSuccess)
+       .catch(ui.signInFailure)
     })
    .catch(ui.signUpFailure)
-  $('#sign-up').modal('hide')
 }
 
 const onSignIn = function (event) {
@@ -26,7 +25,6 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
-  $('#sign-in').modal('hide')
 }
 
 const onSignOut = function (event) {
@@ -36,7 +34,6 @@ const onSignOut = function (event) {
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
-  $('#sign-out').modal('hide')
 }
 
 const onChangePassword = function (event) {
@@ -46,7 +43,6 @@ const onChangePassword = function (event) {
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
-  $('#signIn').modal('hide')
 }
 
 const onCreateTask = function (event) {
