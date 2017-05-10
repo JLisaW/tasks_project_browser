@@ -19,6 +19,7 @@ const signInSuccess = (data) => {
   store.user = data.user
   $('#signInModal').modal('toggle')
   userMessage('You are now signed in.')
+  $('#hideSignOut').show()
 }
 
 const signInFailure = (response) => {
@@ -121,6 +122,7 @@ const onUpdateTask = function (event) {
 const userMessage = (txt) => {
   const message = $('#message')[0]
   $(message).text(txt)
+  setTimeout(function () { $('#message').text('') }, 2000)
 }
 
 module.exports = {

@@ -63,6 +63,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword)
   $('#createTask').on('submit', onCreateTask)
   $('#getUserTasks').on('click', onGetUserTasks)
+  $('#hideSignOut').hide()
 }
 
 module.exports = {
