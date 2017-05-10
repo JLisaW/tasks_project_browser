@@ -116,6 +116,10 @@ const onUpdateTask = function (event) {
     .catch(updateTaskFailure)
 }
 
+const userMessage = (txt) => {
+  const message = $('#message')[0]
+  $(message).text(txt)
+}
 
 module.exports = {
   signUpSuccess,
