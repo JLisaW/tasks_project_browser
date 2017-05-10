@@ -9,8 +9,8 @@ const signUpSuccess = (data) => {
   console.log('sign up success')
 }
 
-const signUpFailure = (error) => {
-  console.log(error)
+const signUpFailure = (response) => {
+ userMessage('Please choose a different username.')
 }
 
 const signInSuccess = (data) => {
@@ -19,18 +19,8 @@ const signInSuccess = (data) => {
   console.log(data.user)
 }
 
-const signInFailure = (error) => {
-  console.log(error)
-}
-
-const autoSignInSuccess = (data) => {
-  console.log('auto sign in success')
-  store.user = data.user
-  $('#authentication').signInmodal('hide')
-}
-
-const autoSignInFailure = (error) => {
-  console.log(error)
+const signInFailure = (response) => {
+  userMessage('Sign in unsuccessful, please try again.')
 }
 
 const signOutSuccess = (data) => {
@@ -38,8 +28,8 @@ const signOutSuccess = (data) => {
   store.user = null
 }
 
-const signOutFailure = (data) => {
-  console.log('sign out failure')
+const signOutFailure = (response) => {
+  userMessage('You are still signed in, please try again.')
 }
 
 const changePasswordSuccess = (data) => {
@@ -47,8 +37,8 @@ const changePasswordSuccess = (data) => {
   $('#change-password').changePWmodal('hide')
 }
 
-const changePasswordFailure = (data) => {
-  console.log('password change failure')
+const changePasswordFailure = (response) => {
+  userMessage('Unsuccessful password change, please try again.')
 }
 
 // END OF AUTH SECTION
@@ -68,25 +58,21 @@ const refreshTable = () => {
 }
 
 const createTaskSuccess = (data) => {
-  console.log('create task success')
   store.userTasks = data.tasks
 }
 
 const createTaskError = (data) => {
-  console.log('create task error')
+   userMessage('Something went wrong, please try again.')
 }
 
 const updateTaskSuccess = (taskId) => {
   console.log('update task success')
   store.userTasks = taskId.tasks
-  // api.updateTask(taskId)
-  //   .then(updateTaskSuccess)
-  //   .catch(updateTaskFailure)
   refreshTable()
 }
 
 const updateTaskFailure = (data) => {
-  console.log('update task failure')
+  userMessage('Something went wrong, please try again.')
 }
 
 const getUserTasksSuccess = (data) => {
@@ -95,7 +81,7 @@ const getUserTasksSuccess = (data) => {
 }
 
 const getUserTasksFailure = () => {
-  console.log('get task failure')
+   userMessage('Something went wrong, please try again.')
 }
 
 const deleteTaskSuccess = () => {
@@ -107,7 +93,7 @@ const deleteTaskSuccess = () => {
 }
 
 const deleteTaskFailure = (data) => {
-  console.log('delete task failure')
+   userMessage('Something went wrong, please try again.')
 }
 
 const onDeleteTask = function (event) {
@@ -125,11 +111,14 @@ const onUpdateTask = function (event) {
   // console.log('update task function')
   event.preventDefault()
   const data = getFormFields(event.target)
-  // data.task.id = taskId
-  debugger
   api.updateTask(data)
     .then(updateTaskSuccess)
     .catch(updateTaskFailure)
+}
+
+const userMessage = (txt) => {
+  const message = $('#message')[0]
+  $(message).text(txt)
 }
 
 module.exports = {
@@ -137,8 +126,6 @@ module.exports = {
   signUpFailure,
   signInSuccess,
   signInFailure,
-  autoSignInSuccess,
-  autoSignInFailure,
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
