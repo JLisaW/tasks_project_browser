@@ -6,17 +6,18 @@ const showTasksHB = require('../taskHandlebars.handlebars')
 const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
-  console.log('sign up success')
+  $('#signUpModal').modal('toggle')
 }
 
 const signUpFailure = (response) => {
- userMessage('Please choose a different username.')
- }
+  userMessage('Please choose a different username.')
+}
 
 const signInSuccess = (data) => {
   console.log('sign in success')
   store.user = data.user
   console.log(data.user)
+  $('#signInModal').modal('toggle')
 }
 
 const signInFailure = (response) => {
@@ -62,7 +63,7 @@ const createTaskSuccess = (data) => {
 }
 
 const createTaskError = (data) => {
-   userMessage('Something went wrong, please try again.')
+  userMessage('Something went wrong, please try again.')
 }
 
 const updateTaskSuccess = (taskId) => {
@@ -82,7 +83,7 @@ const getUserTasksSuccess = (data) => {
 }
 
 const getUserTasksFailure = () => {
-   userMessage('Something went wrong, please try again.')
+  userMessage('Something went wrong, please try again.')
 }
 
 const deleteTaskSuccess = () => {
@@ -94,7 +95,7 @@ const deleteTaskSuccess = () => {
 }
 
 const deleteTaskFailure = (data) => {
-   userMessage('Something went wrong, please try again.')
+  userMessage('Something went wrong, please try again.')
 }
 
 const onDeleteTask = function (event) {
