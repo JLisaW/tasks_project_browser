@@ -11,7 +11,7 @@
         <td>{{task.id}}</td>
         <td>{{task.description}}</td>
         <td><button taskId="{{task.id}}" type="click" class="btn btn-danger delete-task-button">Delete</button></td>
-        <td><form id="update-task-by-id-form" class="update-task-by-id-form">
+        <td><form id="update-task-by-id-form" class="update-task-by-id-form" taskId="{{task.id}}">
             <input type="text" id="update-task-by-id-button" name="task[description]">
             <input type="hidden" name="id" value="{{task.id}}">
         <button taskId="{{task.id}}" type="submit" task="text" class="btn btn-info update-task-button">Edit</button>

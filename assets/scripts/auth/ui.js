@@ -1,9 +1,10 @@
 'use strict'
 
 const store = require('../store.js')
-const api = require('./api')
+const api = require('./api.js')
 const showTasksHB = require('../taskHandlebars.handlebars')
-const getFormFields = require(`../../../lib/get-form-fields`)
+// const events = require('./events.js')
+// const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
   $('#signUpModal').modal('toggle')
@@ -59,12 +60,13 @@ const refreshTable = () => {
   const showTaskHtml = showTasksHB({ tasks: store.userTasks })
   $('#content').empty()
   $('#content').append(showTaskHtml)
-  $('#update-task-by-id-form').on('submit', onUpdateTask)
-  $('.delete-task-button').on('click', onDeleteTask)
+  // $('#update-task-by-id-form').on('submit', events.onUpdateTask)
+  // $('.delete-task-button').on('click', events.onDeleteTask)
 }
 
 const createTaskSuccess = (data) => {
   store.userTasks = data.tasks
+  refreshTable()
   $('input').val('')
 }
 
@@ -102,23 +104,6 @@ const deleteTaskFailure = (data) => {
   userMessage('Something went wrong, please try again.')
 }
 
-const onDeleteTask = function (event) {
-  event.preventDefault()
-  const taskId = $(event.target).attr('taskid')
-  refreshTable()
-  api.deleteTask(taskId)
-    .then(deleteTaskSuccess)
-    .catch(deleteTaskFailure)
-}
-
-const onUpdateTask = function (event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  api.updateTask(data)
-    .then(updateTaskSuccess)
-    .catch(updateTaskFailure)
-}
-
 const userMessage = (txt) => {
   const message = $('#message')[0]
   $(message).text(txt)
@@ -141,5 +126,6 @@ module.exports = {
   createTaskError,
   createTaskSuccess,
   deleteTaskSuccess,
-  deleteTaskFailure
+  deleteTaskFailure,
+  refreshTable
 }

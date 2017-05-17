@@ -37,23 +37,47 @@ const onChangePassword = function (event) {
 }
 
 const onCreateTask = function (event) {
+  console.log('create task fired')
   event.preventDefault()
   const data = getFormFields(event.target)
   api.createTask(data)
       .then(ui.createTaskSuccess)
-      .then(() => {
-        api.getUserTasks()
-        .then(ui.getUserTasksSuccess)
-        .catch(ui.getUserTasksError)
-      })
+      // .then(() => {
+      //   api.getUserTasks()
+      //   .then(ui.getUserTasksSuccess)
+      //   .catch(ui.getUserTasksError)
+      // })
       .catch(ui.createTaskError)
 }
 
 const onGetUserTasks = function (event) {
+  console.log('get user task fired')
   event.preventDefault()
   api.getUserTasks()
         .then(ui.getUserTasksSuccess)
         .catch(ui.getUserTasksError)
+}
+
+const onDeleteTask = function (event) {
+  console.log('on delete task')
+  event.preventDefault()
+  const taskId = $(event.target).attr('taskId')
+  ui.refreshTable()
+  api.deleteTask(taskId)
+    .then(ui.deleteTaskSuccess)
+    .catch(ui.deleteTaskFailure)
+}
+
+const onUpdateTask = function (event) {
+  console.log('update task fired')
+  event.preventDefault()
+  const taskId = $(this).attr('taskId')
+  const data = getFormFields(event.target)
+  console.log(event.target)
+  ui.refreshTable()
+  api.updateTask(taskId, data)
+    .then(ui.updateTaskSuccess)
+    .catch(ui.updateTaskFailure)
 }
 
 const addHandlers = () => {
@@ -63,6 +87,8 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword)
   $('#createTask').on('submit', onCreateTask)
   $('#getUserTasks').on('click', onGetUserTasks)
+  $('#content').on('click', '.delete-task-button', onDeleteTask)
+  $('#content').on('submit', '#update-task-by-id-form', onUpdateTask)
   $('#hideSignOut').hide()
 }
 
