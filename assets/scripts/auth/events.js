@@ -88,7 +88,7 @@ const addHandlers = () => {
   $('#createTask').on('submit', onCreateTask)
   $('#getUserTasks').on('click', onGetUserTasks)
   $('#content').on('click', '.delete-task-button', onDeleteTask)
-  $('#content').on('submit', '#update-task-by-id-form', onUpdateTask)
+  $('#content').on('submit', '.update-task-by-id-form', onUpdateTask)
   $('#hideSignOut').hide()
 }
 
