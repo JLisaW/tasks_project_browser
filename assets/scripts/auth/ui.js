@@ -9,29 +9,33 @@ const showTasksHB = require('../taskHandlebars.handlebars')
 const signUpSuccess = (data) => {
   $('#signUpModal').modal('toggle')
   userMessage('You are now signed up, please sign in.')
+  $('#createTask').hide()
 }
 
 const signUpFailure = (response) => {
   $('#signUpModal').modal('toggle')
   userMessage('Sign up unsuccessful, please try again.')
+  $('#createTask').hide()
 }
 
 const signInSuccess = (data) => {
   store.user = data.user
   $('#signInModal').modal('toggle')
   userMessage('You are now signed in.')
-  $('#hideSignOut').show()
+  $('.btn btn-default').show()
 }
 
 const signInFailure = (response) => {
   $('#signInModal').modal('toggle')
   userMessage('Sign in unsuccessful, please try again.')
+  $('.btn btn-default').hide()
 }
 
 const signOutSuccess = (data) => {
   store.user = null
   $('#content').empty()
   userMessage('You have signed out.')
+  $('#createTask').hide()
 }
 
 const signOutFailure = (response) => {
@@ -89,8 +93,10 @@ const getUserTasksSuccess = (data) => {
   refreshTable()
 }
 
-const getUserTasksFailure = () => {
+const getUserTasksFailure = (data) => {
+  console.log('getUserTasksFailure fired', data)
   userMessage('Something went wrong, please try again.')
+  store.userTasks = data.tasks
 }
 
 const deleteTaskSuccess = () => {
@@ -107,7 +113,7 @@ const deleteTaskFailure = (data) => {
 const userMessage = (txt) => {
   const message = $('#message')[0]
   $(message).text(txt)
-  setTimeout(function () { $('#message').text('') }, 2000)
+  setTimeout(function () { $('#message').text('') }, 3000)
 }
 
 module.exports = {
