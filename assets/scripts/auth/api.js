@@ -52,9 +52,10 @@ const createTask = function (data) {
   })
 }
 
-const updateTask = function (data) {
+const updateTask = function (taskId, data) {
+  console.log(taskId)
   return $.ajax({
-    url: config.apiOrigin + '/tasks/' + data.id,
+    url: config.apiOrigin + '/tasks/' + taskId,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

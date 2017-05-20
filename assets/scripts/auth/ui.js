@@ -22,13 +22,13 @@ const signInSuccess = (data) => {
   store.user = data.user
   $('#signInModal').modal('toggle')
   userMessage('You are now signed in.')
-  $('.btn btn-default').show()
+  $('#hideSignOut').show()
+  $('#createTask').show()
 }
 
 const signInFailure = (response) => {
   $('#signInModal').modal('toggle')
   userMessage('Sign in unsuccessful, please try again.')
-  $('.btn btn-default').hide()
 }
 
 const signOutSuccess = (data) => {
