@@ -42,20 +42,16 @@ const onCreateTask = function (event) {
   const data = getFormFields(event.target)
   api.createTask(data)
       .then(ui.createTaskSuccess)
-      // .then(() => {
-      //   api.getUserTasks()
-      //   .then(ui.getUserTasksSuccess)
-      //   .catch(ui.getUserTasksError)
-      // })
       .catch(ui.createTaskError)
 }
 
 const onGetUserTasks = function (event) {
   console.log('get user task fired')
   event.preventDefault()
-  api.getUserTasks()
+  const data = getFormFields(event.target)
+  api.getUserTasks(data)
         .then(ui.getUserTasksSuccess)
-        .catch(ui.getUserTasksError)
+        .catch(ui.getUserTasksFailure)
 }
 
 const onDeleteTask = function (event) {
@@ -90,6 +86,7 @@ const addHandlers = () => {
   $('#content').on('click', '.delete-task-button', onDeleteTask)
   $('#content').on('submit', '.update-task-by-id-form', onUpdateTask)
   $('#hideSignOut').hide()
+  $('#createTask').addClass('hide-element')
 }
 
 module.exports = {
