@@ -81,6 +81,9 @@ const createTaskError = (data) => {
 const updateTaskSuccess = (taskId) => {
   store.userTasks = taskId.tasks
   refreshTable()
+  api.getUserTasks()
+    .then(getUserTasksSuccess)
+    .catch(getUserTasksFailure)
 }
 
 const updateTaskFailure = (data) => {
@@ -89,14 +92,18 @@ const updateTaskFailure = (data) => {
 }
 
 const getUserTasksSuccess = (data) => {
+  console.log('get user tasks success fired')
+  if (data.tasks.length === 0) {
+    userMessage('You have no tasks.')
+  }
   store.userTasks = data.tasks
   refreshTable()
 }
 
-const getUserTasksFailure = (data) => {
-  console.log('getUserTasksFailure fired', data)
+const getUserTasksFailure = (taskId) => {
+  console.log('getUserTasksFailure fired', taskId)
   userMessage('Something went wrong, please try again.')
-  store.userTasks = data.tasks
+  store.userTasks = taskId.tasks
 }
 
 const deleteTaskSuccess = () => {

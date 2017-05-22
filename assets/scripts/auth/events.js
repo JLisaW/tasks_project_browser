@@ -48,8 +48,7 @@ const onCreateTask = function (event) {
 const onGetUserTasks = function (event) {
   console.log('get user task fired')
   event.preventDefault()
-  const data = getFormFields(event.target)
-  api.getUserTasks(data)
+  api.getUserTasks()
         .then(ui.getUserTasksSuccess)
         .catch(ui.getUserTasksFailure)
 }
