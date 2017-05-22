@@ -3,8 +3,6 @@
 const store = require('../store.js')
 const api = require('./api.js')
 const showTasksHB = require('../taskHandlebars.handlebars')
-// const events = require('./events.js')
-// const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
   $('#signUpModal').modal('toggle')
@@ -64,8 +62,6 @@ const refreshTable = () => {
   const showTaskHtml = showTasksHB({ tasks: store.userTasks })
   $('#content').empty()
   $('#content').append(showTaskHtml)
-  // $('#update-task-by-id-form').on('submit', events.onUpdateTask)
-  // $('.delete-task-button').on('click', events.onDeleteTask)
 }
 
 const createTaskSuccess = (data) => {
@@ -101,7 +97,6 @@ const getUserTasksSuccess = (data) => {
 }
 
 const getUserTasksFailure = (taskId) => {
-  console.log('getUserTasksFailure fired', taskId)
   userMessage('Something went wrong, please try again.')
   store.userTasks = taskId.tasks
 }

@@ -53,7 +53,6 @@ const createTask = function (data) {
 }
 
 const updateTask = function (taskId, data) {
-  console.log(taskId)
   return $.ajax({
     url: config.apiOrigin + '/tasks/' + taskId,
     method: 'PATCH',
