@@ -21,6 +21,7 @@ const signInSuccess = (data) => {
   $('#signInModal').modal('toggle')
   userMessage('You are now signed in.')
   $('#hideSignOut').show()
+  $('#hideChangePW').show()
   $('#createTask').show()
 }
 

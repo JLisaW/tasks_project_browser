@@ -80,6 +80,7 @@ const addHandlers = () => {
   $('#content').on('click', '.delete-task-button', onDeleteTask)
   $('#content').on('submit', '.update-task-by-id-form', onUpdateTask)
   $('#hideSignOut').hide()
+  $('#hideChangePW').hide()
   $('#createTask').addClass('hide-element')
 }
 
