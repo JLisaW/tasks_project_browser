@@ -36,6 +36,14 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
+// END OF AUTH SECTION
+// END OF AUTH SECTION
+// END OF AUTH SECTION
+
+// APP FUNCTIONS BEGIN
+// APP FUNCTIONS BEGIN
+// APP FUNCTIONS BEGIN
+
 const onCreateTask = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)

@@ -23,6 +23,7 @@ const signInSuccess = (data) => {
   $('#hideSignOut').show()
   $('#hideChangePW').show()
   $('#createTask').show()
+  $('#changePWModal').show()
 }
 
 const signInFailure = (response) => {

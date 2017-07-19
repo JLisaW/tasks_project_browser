@@ -41,6 +41,14 @@ const changePassword = (data) => {
   })
 }
 
+// END OF AUTH SECTION
+// END OF AUTH SECTION
+// END OF AUTH SECTION
+
+// APP FUNCTIONS BEGIN
+// APP FUNCTIONS BEGIN
+// APP FUNCTIONS BEGIN
+
 const createTask = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/tasks',

@@ -37,10 +37,10 @@ User Stories
 * As a user, I want to be able to delete a task.
 * As a user, I want to be able to view tasks.
 * As a user, I want to be able to update a task.
+
 Process
 
-
-I started creating this app by creating user stories to help me determine the user experience I wanted.  I started by building the backend to help me determine the kind of data I store in my database.  Then I created a basic HTML/CSS for a visual of what I wanted the app to entail and test the functionalities I was going to create.
+I started creating this app by creating user stories to help me determine the user experience I wanted.  I started by building the back-end to help me determine the kind of data I wanted to store in my database.  Then I created a basic HTML/CSS for a visual of what I wanted the app to entail and test the functionalities I was going to create.
 
 For Future Iterations
 
